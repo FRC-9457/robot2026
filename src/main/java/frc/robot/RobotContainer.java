@@ -34,7 +34,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    driveBase.setDefaultCommand(driveFieldOrientedDirectAngleKeyboard);
+    driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
   }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
