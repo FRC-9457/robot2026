@@ -34,13 +34,13 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    driveBase.setDefaultCommand(driveRobotOrientedAngularVelocity);
+    driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
   }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
                                                                 () -> m_driverController.getLeftY() * -1,
                                                                 () -> m_driverController.getLeftX() * -1)
-                                                            .withControllerRotationAxis(m_driverController::getRightX)
+                                                            .withControllerRotationAxis(() -> m_driverController.getRightX()*-1)
                                                             .deadband(OperatorConstants.DEADBAND)
                                                             .scaleTranslation(0.8)
                                                             .allianceRelativeControl(false);
@@ -52,7 +52,7 @@ SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerH
 SwerveInputStream driveRobotOriented = SwerveInputStream.of(driveBase.getSwerveDrive(),
                                                               () -> m_driverController.getLeftY() * -1,
                                                               () -> m_driverController.getLeftX() * -1)
-                                                          .withControllerRotationAxis(m_driverController::getRightX)
+                                                          .withControllerRotationAxis(() -> m_driverController.getRightX()*-1)
                                                           .deadband(OperatorConstants.DEADBAND)
                                                           .scaleTranslation(0.8)
                                                           .robotRelative(true);
