@@ -34,7 +34,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
-    driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
+    driveBase.setDefaultCommand(driveRobotOrientedAngularVelocity);
   }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
@@ -43,11 +43,19 @@ SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerv
                                                             .withControllerRotationAxis(m_driverController::getRightX)
                                                             .deadband(OperatorConstants.DEADBAND)
                                                             .scaleTranslation(0.8)
-                                                            .allianceRelativeControl(true);
+                                                            .allianceRelativeControl(false);
 
 SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(m_driverController::getRightX,
                                                                                              m_driverController::getRightY)
                                                            .headingWhile(true);
+
+SwerveInputStream driveRobotOriented = SwerveInputStream.of(driveBase.getSwerveDrive(),
+                                                              () -> m_driverController.getLeftY() * -1,
+                                                              () -> m_driverController.getLeftX() * -1)
+                                                          .withControllerRotationAxis(m_driverController::getRightX)
+                                                          .deadband(OperatorConstants.DEADBAND)
+                                                          .scaleTranslation(0.8)
+                                                          .robotRelative(true);
 
 SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.getSwerveDrive(),
                                                                         () -> -m_driverController.getLeftY(),
@@ -80,6 +88,7 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
 
   Command driveFieldOrientedDirectAngle = driveBase.driveFieldOriented(driveDirectAngle);
   Command driveFieldOrientedAngularVelocity = driveBase.driveFieldOriented(driveAngularVelocity);
+  Command driveRobotOrientedAngularVelocity = driveBase.driveFieldOriented(driveRobotOriented);
   Command driveFieldOrientedDirectAngleKeyboard      = driveBase.driveFieldOriented(driveDirectAngleKeyboard);
   Command driveFieldOrientedAnglularVelocityKeyboard = driveBase.driveFieldOriented(driveAngularVelocityKeyboard);
 
