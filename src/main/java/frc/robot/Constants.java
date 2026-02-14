@@ -19,8 +19,7 @@ public final class Constants {
     public static final int kDriverControllerPort = 0;
     public static final double DEADBAND = 0.05;
 
-    // public static final int DRIVER_CONTROLLER_PORT = 0;
-    public static final int OPERATOR_CONTROLLER_PORT = 0;
+    public static final int OPERATOR_CONTROLLER_PORT = 1;
   }
 
   public static final class FuelConstants {
@@ -37,7 +36,7 @@ public final class Constants {
     // See the Software Guide for tuning information
     public static final double INTAKING_FEEDER_VOLTAGE = -12;
     public static final double INTAKING_INTAKE_VOLTAGE = 10.6;
-    public static final double LAUNCHING_FEEDER_VOLTAGE = 9;
+    public static final double LAUNCHING_FEEDER_VOLTAGE = 12; //Isiah: Increased from 9 to 12
     public static final double LAUNCHING_LAUNCHER_VOLTAGE = 12;
     public static final double SPIN_UP_FEEDER_VOLTAGE = -6;
     public static final double SPIN_UP_SECONDS = 1;
