@@ -38,17 +38,19 @@ public class SwerveSubsystem extends SubsystemBase {
     try
     {
       SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;
-      swerveDrive = new SwerveParser(directory).createSwerveDrive(Constants.maxSpeed, new Pose2d(new Translation2d(Meter.of(3.572),
-                                                                                                                   Meter.of(3.862)),
-                                                                                                                   Rotation2d.fromDegrees(-137.726)));
+      swerveDrive = new SwerveParser(directory).createSwerveDrive(Constants.maxSpeed, new Pose2d(new Translation2d(Meter.of(0),
+                                                                                                                   Meter.of(0)),
+                                                                                                                   Rotation2d.fromDegrees(0)));
       // Alternative method if you don't want to supply the conversion factor via JSON files.
       // swerveDrive = new SwerveParser(directory).createSwerveDrive(maximumSpeed, angleConversionFactor, driveConversionFactor);
     } catch (Exception e)
     {
       throw new RuntimeException(e);
     }
+    
     //Constructor for PathPlanner
      setupPathPlanner();
+    
   }
 
   /**
@@ -78,6 +80,8 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    Pose2d pose = swerveDrive.getPose();
+    System.out.printf("X: %.2f, Y: %.2f, Rotation: %.2f\n", pose.getX(), pose.getY(), pose.getRotation().getDegrees());
   }
 
   @Override

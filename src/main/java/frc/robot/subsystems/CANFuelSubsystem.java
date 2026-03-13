@@ -55,6 +55,7 @@ public class CANFuelSubsystem extends SubsystemBase {
     feederRoller.setVoltage(SmartDashboard.getNumber("Intaking feeder roller value", INTAKING_FEEDER_VOLTAGE));
     intakeLauncherRoller
         .setVoltage(SmartDashboard.getNumber("Intaking intake roller value", INTAKING_INTAKE_VOLTAGE));
+        System.out.println("Running shooter event!");
   }
 
   // A method to set the rollers to values for ejecting fuel out the intake. Uses

@@ -9,23 +9,11 @@
           "data": {
             "pathName": "Ladder"
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Pickup"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "Return"
-          }
         }
       ]
     }
   },
-  "resetOdom": true,
+  "resetOdom": false,
   "folder": null,
   "choreoAuto": false
 }
