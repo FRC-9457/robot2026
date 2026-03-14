@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
+import frc.robot.LimelightHelpers;
 
 import java.io.File;
 import java.util.function.Supplier;
@@ -69,6 +70,8 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    double tx = LimelightHelpers.getTX("");  // Horizontal offset from crosshair to target in degrees
+    System.out.println(tx);
   }
 
   @Override
