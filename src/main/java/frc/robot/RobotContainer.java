@@ -12,8 +12,18 @@ import frc.robot.subsystems.CANFuelSubsystem;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import swervelib.SwerveInputStream;
+
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.events.EventTrigger;
+
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.util.sendable.Sendable;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -35,11 +45,26 @@ public class RobotContainer {
   private final CommandXboxController operatorController = new CommandXboxController(
       OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
+    //Path follower
+   // private final SendableChooser<Command> autoChooser;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+
+    /////////
+    //Isiah- Events for autonomous
+    new EventTrigger("shootingEvent").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
+    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); 
+    new EventTrigger("returnShooter").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();})); //for event triggers
+    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); //for event triggers
+
+    //autoChooser = AutoBuilder.buildAutoChooser("testAuto");
+    //SmartDashboard.putData("Auto Mode", autoChooser);
+    /////////
+
     // Configure the trigger bindings
     configureBindings(); 
-    driveBase.setDefaultCommand(driveRobotOrientedAngularVelocity);
+    driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
 }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
@@ -128,7 +153,10 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return null;
+    // This method loads the auto when it is called, however, it is recommended
+    // to first load your paths/autos when code starts, then return the
+    // pre-loaded auto/path
+    return new PathPlannerAuto("finalAuto");
   }
 }
+
