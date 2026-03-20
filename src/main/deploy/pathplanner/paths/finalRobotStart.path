@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.320771055753263,
-        "y": 3.92202846975089
+        "x": 3.5,
+        "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.320771055753263,
-        "y": 5.314294696869636
+        "x": 1.865289405378733,
+        "y": 4.0
       },
       "isLocked": false,
       "linkedName": "finalStartPoint"
     },
     {
       "anchor": {
-        "x": 5.6124792408066435,
-        "y": 5.826405693950178
+        "x": 2.331155492154065,
+        "y": 4.0
       },
       "prevControl": {
-        "x": 4.092345712228683,
-        "y": 5.826405693950178
+        "x": 4.1433846814580155,
+        "y": 4.0
       },
       "nextControl": null,
       "isLocked": false,
@@ -44,7 +44,14 @@
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "ballShoot",
+      "waypointRelativePos": 0.2644824311490928,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -55,7 +62,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 1.725616066495718
   },
   "reversed": false,
   "folder": null,

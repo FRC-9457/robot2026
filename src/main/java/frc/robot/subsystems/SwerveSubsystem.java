@@ -81,6 +81,7 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    System.out.printf("%f %f %f \n\n" , getPose().getX(), getPose().getY(), getPose().getRotation().getDegrees());
   }
 
   @Override

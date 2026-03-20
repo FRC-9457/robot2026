@@ -53,10 +53,8 @@ public class RobotContainer {
 
     /////////
     //Isiah- Events for autonomous
-    new EventTrigger("shootingEvent").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
-    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); 
-    new EventTrigger("returnShooter").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();})); //for event triggers
-    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); //for event triggers
+    new EventTrigger("ballShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.launch();}));
+    new EventTrigger("finalClimb").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); 
 
     //autoChooser = AutoBuilder.buildAutoChooser("testAuto");
     //SmartDashboard.putData("Auto Mode", autoChooser);
@@ -156,7 +154,7 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // This method loads the auto when it is called, however, it is recommended
     // to first load your paths/autos when code starts, then return the
     // pre-loaded auto/path
-    return new PathPlannerAuto("finalAuto");
+    return new PathPlannerAuto("odoTest2");
   }
 }
 

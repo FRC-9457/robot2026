@@ -3,48 +3,35 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.6124792408066435,
-        "y": 5.826405693950178
+        "x": 0.0,
+        "y": 0.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.6124792408066435,
-        "y": 5.826405693950178
+        "x": 0.2572722341250149,
+        "y": 0.0
       },
       "isLocked": false,
-      "linkedName": "finalStartRamp"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.311826809015422,
-        "y": 2.1360023724792403
+        "x": 0.0,
+        "y": 0.0
       },
       "prevControl": {
-        "x": 6.061826809015422,
-        "y": 2.1360023724792403
+        "x": -0.30294187778948434,
+        "y": 0.0
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "finalCollectEnd"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [
-    {
-      "name": "finalBallCollect",
-      "waypointRelativePos": 0.17521704814522385,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "finalMotorStop",
-      "waypointRelativePos": 1.0,
-      "endWaypointRelativePos": null,
-      "command": null
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,
@@ -55,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 1.4320961841646997
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": null,
