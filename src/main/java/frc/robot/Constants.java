@@ -26,6 +26,7 @@ public final class Constants {
     // Motor controller IDs for Fuel Mechanism motors
     public static final int FEEDER_MOTOR_ID = 12;
     public static final int INTAKE_LAUNCHER_MOTOR_ID = 11;
+    public static final int CLIMB_MOTOR_ID = 13;
 
     // Current limit and nominal voltage for fuel mechanism motors.
     public static final int FEEDER_MOTOR_CURRENT_LIMIT = 60;
@@ -34,6 +35,9 @@ public final class Constants {
     // Voltage values for various fuel operations. These values may need to be tuned
     // based on exact robot construction.
     // See the Software Guide for tuning information
+    public static final double CLIMB_UP_VOLTAGE = 0.7;
+    public static final double CLIMB_STOP_VOLTAGE = 0;
+    public static final double CLIMB_DOWN_VOLTAGE = -0.7;
     public static final double INTAKING_FEEDER_VOLTAGE = -12;
     public static final double INTAKING_INTAKE_VOLTAGE = 10.6;
     public static final double LAUNCHING_FEEDER_VOLTAGE = 12; //Isiah: Increased from 9 to 12

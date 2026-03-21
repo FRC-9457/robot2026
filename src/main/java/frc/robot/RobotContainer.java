@@ -13,12 +13,16 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import swervelib.SwerveInputStream;
 
+import java.io.OutputStreamWriter;
+
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.events.EventTrigger;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.units.measure.Power;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,6 +30,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+//Import Library for PDP
+import edu.wpi.first.wpilibj.PowerDistribution;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -37,6 +44,9 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final CANFuelSubsystem ballSubsystem = new CANFuelSubsystem();
   private final SwerveSubsystem driveBase = new SwerveSubsystem();
+  private final MotorSubsystem climbBase = new MotorSubsystem();
+  //Create an instance
+  private final PowerDistribution PDH = new PowerDistribution();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -63,6 +73,9 @@ public class RobotContainer {
     // Configure the trigger bindings
     configureBindings(); 
     driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
+
+    //Turn on the switch
+    PDH.setSwitchableChannel(true);
 }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
@@ -143,6 +156,12 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // the intake
     operatorController.a()
         .whileTrue(ballSubsystem.runEnd(() -> ballSubsystem.eject(), () -> ballSubsystem.stop()));
+    
+    operatorController.rightTrigger().onTrue(climbBase.goToPosition1());
+    operatorController.leftTrigger().onTrue(climbBase.goToPosition0());
+    operatorController.b().onTrue(climbBase.climbRunUp()).onFalse(climbBase.climbRunStop());
+    operatorController.y().onTrue(climbBase.climbRunDown()).onFalse(climbBase.climbRunStop());
+
   }
 
   /**
