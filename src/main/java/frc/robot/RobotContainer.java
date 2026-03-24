@@ -44,7 +44,6 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final CANFuelSubsystem ballSubsystem = new CANFuelSubsystem();
   private final SwerveSubsystem driveBase = new SwerveSubsystem();
-  private final MotorSubsystem climbBase = new MotorSubsystem();
   //Create an instance
   private final PowerDistribution PDH = new PowerDistribution();
 
@@ -56,7 +55,7 @@ public class RobotContainer {
       OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
     //Path follower
-   // private final SendableChooser<Command> autoChooser;
+   private final SendableChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -64,18 +63,21 @@ public class RobotContainer {
     /////////
     //Isiah- Events for autonomous
     new EventTrigger("ballShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.launch();}));
-    new EventTrigger("finalClimb").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); 
+    new EventTrigger("stopBallShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
 
-    //autoChooser = AutoBuilder.buildAutoChooser("testAuto");
-    //SmartDashboard.putData("Auto Mode", autoChooser);
+
+
+    autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+
     /////////
 
     // Configure the trigger bindings
     configureBindings(); 
     driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
-
     //Turn on the switch
-    PDH.setSwitchableChannel(true);
+    PDH.setSwitchableChannel(false);
+    System.out.println("\n\n Path Names: "+ AutoBuilder.getAllAutoNames());
 }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
@@ -157,10 +159,6 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     operatorController.a()
         .whileTrue(ballSubsystem.runEnd(() -> ballSubsystem.eject(), () -> ballSubsystem.stop()));
     
-    operatorController.rightTrigger().onTrue(climbBase.goToPosition1());
-    operatorController.leftTrigger().onTrue(climbBase.goToPosition0());
-    operatorController.b().onTrue(climbBase.climbRunUp()).onFalse(climbBase.climbRunStop());
-    operatorController.y().onTrue(climbBase.climbRunDown()).onFalse(climbBase.climbRunStop());
 
   }
 
@@ -173,7 +171,6 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // This method loads the auto when it is called, however, it is recommended
     // to first load your paths/autos when code starts, then return the
     // pre-loaded auto/path
-    return new PathPlannerAuto("odoTest2");
-  }
+  return autoChooser.getSelected();  }
 }
 
