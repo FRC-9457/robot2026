@@ -3,66 +3,66 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.5,
-        "y": 4.0
-      },
-      "prevControl": null,
-      "nextControl": {
-        "x": 1.3064,
-        "y": 0.27364444444444347
-      },
-      "isLocked": false,
-      "linkedName": "ballShoot"
-    },
-    {
-      "anchor": {
-        "x": 5.444111111111112,
-        "y": 0.6439333333333332
-      },
-      "prevControl": {
-        "x": 2.7641835099144156,
-        "y": 0.6234758707287786
-      },
-      "nextControl": {
-        "x": 9.273677777777777,
-        "y": 0.673166666666666
-      },
-      "isLocked": false,
-      "linkedName": "startEndPoint"
-    },
-    {
-      "anchor": {
         "x": 7.734,
         "y": 6.033
       },
+      "prevControl": null,
+      "nextControl": {
+        "x": 7.6561,
+        "y": 7.611600000000001
+      },
+      "isLocked": false,
+      "linkedName": "intakeEnd"
+    },
+    {
+      "anchor": {
+        "x": 4.567111111111111,
+        "y": 7.3968333333333325
+      },
       "prevControl": {
-        "x": 7.519677777777778,
-        "y": 5.545388888888888
+        "x": 5.551348238641804,
+        "y": 7.3968333333333325
+      },
+      "nextControl": {
+        "x": 3.5828739835804164,
+        "y": 7.3968333333333325
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.5,
+        "y": 4.0
+      },
+      "prevControl": {
+        "x": 2.1504888888888893,
+        "y": 7.669677777777778
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "intakeEnd"
+      "linkedName": "ballShoot"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.4188235294117669,
-      "rotationDegrees": 90.0
+      "waypointRelativePos": 0.33098039215685937,
+      "rotationDegrees": 0.0
     }
   ],
   "constraintZones": [],
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "stopBallShoot",
-      "waypointRelativePos": 0,
+      "name": "stopIntake",
+      "waypointRelativePos": 0.21716937354988666,
       "endWaypointRelativePos": null,
       "command": null
     },
     {
-      "name": "intake",
-      "waypointRelativePos": 1.1503597122302016,
-      "endWaypointRelativePos": 2.0,
+      "name": "ballShoot",
+      "waypointRelativePos": 2.0,
+      "endWaypointRelativePos": null,
       "command": null
     }
   ],
@@ -76,13 +76,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 90.0
+    "rotation": 0.0
   },
   "reversed": false,
   "folder": null,
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 90.0
   },
   "useDefaultConstraints": true
 }

@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "middleShootStart"
+            "pathName": "RTShortShoot"
           }
         },
         {
@@ -19,13 +19,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "middleMove"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "return"
+            "pathName": "RTShortIntake"
           }
         }
       ]

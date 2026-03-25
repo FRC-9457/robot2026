@@ -88,10 +88,10 @@ public class SwerveSubsystem extends SubsystemBase {
     LimelightHelpers.PoseEstimate mt2 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight");
     
     // if our angular velocity is greater than 360 degrees per second, ignore vision updates
-    boolean doRejectUpdate = true; 
+    boolean doRejectUpdate = false; 
     // Query some boolean state, such as a digital sensor.
     
-    if(Math.abs(swerveDrive.getFieldVelocity().omegaRadiansPerSecond) > 360)
+    if(Math.abs(swerveDrive.getFieldVelocity().omegaRadiansPerSecond) > 3.14)
     {
       doRejectUpdate = true;
     }

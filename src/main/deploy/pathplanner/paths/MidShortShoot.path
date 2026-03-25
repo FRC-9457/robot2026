@@ -3,35 +3,42 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.931333333333333,
-        "y": 0.6147000000000002
+        "x": 3.5,
+        "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.931333333333333,
-        "y": 0.6147
+        "x": 2.5,
+        "y": 4.0
       },
       "isLocked": false,
-      "linkedName": "startEndPoint"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 7.051944444444445,
-        "y": 2.8169444444444447
+        "x": 2.5,
+        "y": 4.0
       },
       "prevControl": {
-        "x": 6.051944444444445,
-        "y": 2.8169444444444447
+        "x": 3.5,
+        "y": 4.0
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "MidShortEnd"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [],
   "pointTowardsZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "ballShoot",
+      "waypointRelativePos": 0.9846867749419883,
+      "endWaypointRelativePos": null,
+      "command": null
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 3.0,

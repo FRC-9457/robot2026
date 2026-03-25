@@ -64,6 +64,9 @@ public class RobotContainer {
     //Isiah- Events for autonomous
     new EventTrigger("ballShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.launch();}));
     new EventTrigger("stopBallShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
+    new EventTrigger("intake").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
+    new EventTrigger("stopIntake").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
+
 
 
 
