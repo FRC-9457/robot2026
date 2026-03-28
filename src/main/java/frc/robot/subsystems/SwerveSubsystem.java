@@ -82,12 +82,12 @@ public class SwerveSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    // System.out.printf("%f %f %f \n\n" , getPose().getX(), getPose().getY(), getPose().getRotation().getDegrees());
+     System.out.printf("%f %f %f \n\n" , getPose().getX(), getPose().getY(), getPose().getRotation().getDegrees());
 
     LimelightHelpers.SetRobotOrientation("limelight", getPose().getRotation().getDegrees(), 0, 0, 0, 0, 0);
     LimelightHelpers.PoseEstimate mt2 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight");
     
-    // if our angular velocity is greater than 360 degrees per second, ignore vision updates
+    // if our angular velocity is greater t360 degrees per second, ignore vision updates
     boolean doRejectUpdate = false; 
     // Query some boolean state, such as a digital sensor.
     
@@ -173,7 +173,7 @@ public class SwerveSubsystem extends SubsystemBase {
             var alliance = DriverStation.getAlliance();
             if (alliance.isPresent())
             {
-              return alliance.get() == DriverStation.Alliance.Blue;
+              return alliance.get() == DriverStation.Alliance.Red;
             }
             return false;
           },
