@@ -13,19 +13,13 @@
         {
           "type": "wait",
           "data": {
-            "waitTime": 9.0
+            "waitTime": 4.0
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "rightTrenchMove"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "rightTrenchReturn"
           }
         },
         {

@@ -89,12 +89,19 @@ public class SwerveSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() {
+    if (DriverStation.isDisabled()) {
+      LimelightHelpers.SetThrottle("limelight", 150);
+    } else {
+      LimelightHelpers.SetThrottle("limelight", 0);
+    }
+
+
     // This method will be called once per scheduler run
      System.out.printf("%f %f %f \n\n" , getPose().getX(), getPose().getY(), getPose().getRotation().getDegrees());
 
     LimelightHelpers.SetRobotOrientation("limelight", getPose().getRotation().getDegrees(), 0, 0, 0, 0, 0);
     LimelightHelpers.PoseEstimate mt2 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight");
-    
+    // System.out.printf("mt2 %f %f %f \n\n" , mt2.pose.getX(), mt2.pose.getY(), mt2.pose.getRotation().getDegrees());
     // if our angular velocity is greater t360 degrees per second, ignore vision updates
     boolean doRejectUpdate = false; 
     // Query some boolean state, such as a digital sensor.
@@ -181,7 +188,7 @@ public class SwerveSubsystem extends SubsystemBase {
             var alliance = DriverStation.getAlliance();
             if (alliance.isPresent())
             {
-              return alliance.get() == DriverStation.Alliance.Blue;
+              return alliance.get() == DriverStation.Alliance.Red;
             }
             return false;
           },
@@ -221,6 +228,32 @@ public class SwerveSubsystem extends SubsystemBase {
   {
     System.out.println("\n\n\nRESETING ODOMETRY\n\n\n");
     swerveDrive.resetOdometry(initialHolonomicPose);
+  }
+
+  public void zeroGyro()
+  {
+    swerveDrive.zeroGyro();
+  }
+
+  private boolean isRedAlliance()
+  {
+    var alliance = DriverStation.getAlliance();
+    return alliance.isPresent() ? alliance.get() == DriverStation.Alliance.Red : false;
+  }
+
+  public Command zeroGyroWithAlliance()
+  {
+    return runOnce(
+      () -> {
+        if (isRedAlliance())
+        {
+          zeroGyro();
+          resetOdometry(new Pose2d(getPose().getTranslation(), Rotation2d.fromDegrees(180)));
+        } else
+        {
+          zeroGyro();
+        }
+    });
   }
 
   /**

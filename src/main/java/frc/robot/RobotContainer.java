@@ -162,7 +162,7 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     operatorController.a()
         .whileTrue(ballSubsystem.runEnd(() -> ballSubsystem.eject(), () -> ballSubsystem.stop()));
     
-
+    m_driverController.back().onTrue(driveBase.zeroGyroWithAlliance());
   }
 
   /**
