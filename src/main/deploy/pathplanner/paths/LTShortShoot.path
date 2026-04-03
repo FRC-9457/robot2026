@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 5.6124792408066435,
-        "y": 5.826405693950178
+        "x": 4.25,
+        "y": 7.455299999999999
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.6124792408066435,
-        "y": 5.826405693950178
+        "x": 3.382744444444444,
+        "y": 7.240922222222221
       },
       "isLocked": false,
-      "linkedName": "finalStartRamp"
+      "linkedName": null
     },
     {
       "anchor": {
-        "x": 6.311826809015422,
-        "y": 2.1360023724792403
+        "x": 2.4038444444444447,
+        "y": 6.334688888888889
       },
       "prevControl": {
-        "x": 6.061826809015422,
-        "y": 2.1360023724792403
+        "x": 2.423333333333334,
+        "y": 6.899866666666667
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "finalCollectEnd"
+      "linkedName": "LTShortShootEnd"
     }
   ],
   "rotationTargets": [],
@@ -33,29 +33,23 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "finalBallCollect",
-      "waypointRelativePos": 0.17521704814522385,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "finalMotorStop",
-      "waypointRelativePos": 1.0,
+      "name": "ballShoot",
+      "waypointRelativePos": 0.7563805104408143,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0,
+    "maxVelocity": 1.75,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 90.0,
+    "maxAngularAcceleration": 120.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 1.4320961841646997
+    "rotation": 134.30972280213493
   },
   "reversed": false,
   "folder": null,

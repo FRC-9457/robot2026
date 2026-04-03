@@ -7,19 +7,31 @@
         {
           "type": "path",
           "data": {
-            "pathName": "Ladder"
+            "pathName": "leftTrenchStart"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 4.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Pickup"
+            "pathName": "leftTrenchMove"
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "Return"
+            "waitTime": 4.0
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "stopBallShoot"
           }
         }
       ]

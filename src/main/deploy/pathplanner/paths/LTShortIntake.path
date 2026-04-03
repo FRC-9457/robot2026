@@ -1,0 +1,88 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.4038444444444447,
+        "y": 6.334688888888889
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 2.472055555555556,
+        "y": 7.309133333333333
+      },
+      "isLocked": false,
+      "linkedName": "LTShortShootEnd"
+    },
+    {
+      "anchor": {
+        "x": 4.479411111111111,
+        "y": 7.455299999999999
+      },
+      "prevControl": {
+        "x": 3.4794111111111112,
+        "y": 7.455299999999999
+      },
+      "nextControl": {
+        "x": 5.479411111111111,
+        "y": 7.455299999999999
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.9971555555555565,
+        "y": 4.8340444444444435
+      },
+      "prevControl": {
+        "x": 8.172555555555556,
+        "y": 7.7378888888888895
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -90.0
+    }
+  ],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [
+    {
+      "name": "stopBallShoot",
+      "waypointRelativePos": 0,
+      "endWaypointRelativePos": null,
+      "command": null
+    },
+    {
+      "name": "intake",
+      "waypointRelativePos": 1.5721577726217983,
+      "endWaypointRelativePos": 2.0,
+      "command": null
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.75,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 90.0,
+    "maxAngularAcceleration": 120.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "reversed": false,
+  "folder": null,
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 134.30972280213493
+  },
+  "useDefaultConstraints": true
+}

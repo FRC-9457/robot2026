@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.684345238095238,
-        "y": 4.609226190476191
+        "x": 4.25,
+        "y": 7.3675999999999995
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.684345238095238,
-        "y": 4.609226190476191
+        "x": 2.3064,
+        "y": 7.260411111111112
       },
       "isLocked": false,
-      "linkedName": "endPick"
+      "linkedName": "leftTrenchStart"
     },
     {
       "anchor": {
-        "x": 3.5717857142857135,
-        "y": 3.826190476190477
+        "x": 2.627966666666667,
+        "y": 5.555133333333333
       },
       "prevControl": {
-        "x": 2.5717857142857135,
-        "y": 3.826190476190477
+        "x": 2.648744444444445,
+        "y": 6.671766666666666
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "startPoint"
+      "linkedName": "leftTrenchEnd"
     }
   ],
   "rotationTargets": [],
@@ -33,29 +33,23 @@
   "pointTowardsZones": [],
   "eventMarkers": [
     {
-      "name": "returnShooter",
-      "waypointRelativePos": 0.12465753424657594,
-      "endWaypointRelativePos": null,
-      "command": null
-    },
-    {
-      "name": "stopReturnShooter",
+      "name": "ballShoot",
       "waypointRelativePos": 1.0,
       "endWaypointRelativePos": null,
       "command": null
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 3.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 540.0,
-    "maxAngularAcceleration": 720.0,
+    "maxVelocity": 1.75,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 90.0,
+    "maxAngularAcceleration": 120.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 129.6990734834743
   },
   "reversed": false,
   "folder": null,

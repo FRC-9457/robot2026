@@ -13,12 +13,16 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import swervelib.SwerveInputStream;
 
+import java.io.OutputStreamWriter;
+
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import com.pathplanner.lib.events.EventTrigger;
 
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.units.measure.Power;
 import edu.wpi.first.util.sendable.Sendable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -26,6 +30,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+
+//Import Library for PDP
+import edu.wpi.first.wpilibj.PowerDistribution;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -37,6 +44,8 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final CANFuelSubsystem ballSubsystem = new CANFuelSubsystem();
   private final SwerveSubsystem driveBase = new SwerveSubsystem();
+  //Create an instance
+  private final PowerDistribution PDH = new PowerDistribution();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -46,25 +55,32 @@ public class RobotContainer {
       OperatorConstants.OPERATOR_CONTROLLER_PORT);
 
     //Path follower
-   // private final SendableChooser<Command> autoChooser;
+   private final SendableChooser<Command> autoChooser;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     /////////
     //Isiah- Events for autonomous
-    new EventTrigger("shootingEvent").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
-    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); 
-    new EventTrigger("returnShooter").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();})); //for event triggers
-    new EventTrigger("stopReturnShooter").onTrue(Commands.runOnce(() -> {ballSubsystem.stop();})); //for event triggers
+    new EventTrigger("ballShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.launch();}));
+    new EventTrigger("stopBallShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
+    new EventTrigger("intake").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
+    new EventTrigger("stopIntake").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
 
-    //autoChooser = AutoBuilder.buildAutoChooser("testAuto");
-    //SmartDashboard.putData("Auto Mode", autoChooser);
+
+
+
+    autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+
     /////////
 
     // Configure the trigger bindings
     configureBindings(); 
     driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
+    //Turn on the switch
+    PDH.setSwitchableChannel(false);
+    System.out.println("\n\n Path Names: "+ AutoBuilder.getAllAutoNames());
 }
 
 SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerveDrive(),
@@ -73,7 +89,7 @@ SwerveInputStream driveAngularVelocity = SwerveInputStream.of(driveBase.getSwerv
                                                             .withControllerRotationAxis(() -> m_driverController.getRightX()*-1)
                                                             .deadband(OperatorConstants.DEADBAND)
                                                             .scaleTranslation(0.8)
-                                                            .allianceRelativeControl(false);
+                                                            .allianceRelativeControl(true);
 
 SwerveInputStream driveDirectAngle = driveAngularVelocity.copy().withControllerHeadingAxis(m_driverController::getRightX,
                                                                                              m_driverController::getRightY)
@@ -145,6 +161,8 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // the intake
     operatorController.a()
         .whileTrue(ballSubsystem.runEnd(() -> ballSubsystem.eject(), () -> ballSubsystem.stop()));
+    
+    m_driverController.back().onTrue(driveBase.zeroGyroWithAlliance());
   }
 
   /**
@@ -156,7 +174,6 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // This method loads the auto when it is called, however, it is recommended
     // to first load your paths/autos when code starts, then return the
     // pre-loaded auto/path
-    return new PathPlannerAuto("Example Auto");
-  }
+  return autoChooser.getSelected();  }
 }
 
