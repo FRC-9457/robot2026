@@ -20,6 +20,7 @@ import com.pathplanner.lib.controllers.PPHolonomicDriveController;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Filesystem;
 import swervelib.parser.SwerveParser;
 import swervelib.telemetry.SwerveDriveTelemetry;
@@ -46,7 +47,7 @@ public class SwerveSubsystem extends SubsystemBase {
                                                                       Meter.of(4)),
                                                     Rotation2d.fromDegrees(180));
 
-
+    SmartDashboard.putBoolean("blueAlliance", blueAlliance);
     try
     {
       SwerveDriveTelemetry.verbosity = TelemetryVerbosity.HIGH;

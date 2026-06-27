@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.4038444444444447,
-        "y": 6.334688888888889
+        "x": 3.0,
+        "y": 5.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.472055555555556,
-        "y": 7.309133333333333
+        "x": 3.0682111111111112,
+        "y": 5.974444444444444
       },
       "isLocked": false,
       "linkedName": "LTShortShootEnd"
@@ -20,12 +20,12 @@
         "y": 7.455299999999999
       },
       "prevControl": {
-        "x": 3.4794111111111112,
-        "y": 7.455299999999999
+        "x": 2.4818000000000002,
+        "y": 7.601466666666667
       },
       "nextControl": {
-        "x": 5.479411111111111,
-        "y": 7.455299999999999
+        "x": 5.4767448347026715,
+        "y": 7.382324361688421
       },
       "isLocked": false,
       "linkedName": null
@@ -67,10 +67,10 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.75,
-    "maxAcceleration": 1.5,
-    "maxAngularVelocity": 90.0,
-    "maxAngularAcceleration": 120.0,
+    "maxVelocity": 2.5,
+    "maxAcceleration": 2.25,
+    "maxAngularVelocity": 180.0,
+    "maxAngularAcceleration": 270.0,
     "nominalVoltage": 12.0,
     "unlimited": false
   },

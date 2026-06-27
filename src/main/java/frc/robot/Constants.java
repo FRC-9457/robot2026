@@ -46,5 +46,5 @@ public final class Constants {
     public static final double SPIN_UP_SECONDS = 1;
   }
 
-  public static final double maxSpeed = Units.feetToMeters(9.0);
+  public static final double maxSpeed = Units.feetToMeters(12.0);
 }
