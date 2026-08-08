@@ -62,9 +62,9 @@ public class RobotContainer {
     /////////
     //Isiah- Events for autonomous
     new EventTrigger("ballShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.launch();}));
-    new EventTrigger("stopBallShoot").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
+    new EventTrigger("stopMotors").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
     new EventTrigger("intake").onTrue(Commands.runOnce(()-> {ballSubsystem.intake();}));
-    new EventTrigger("stopIntake").onTrue(Commands.runOnce(()-> {ballSubsystem.stop();}));
+    new EventTrigger("eject").onTrue(Commands.runOnce(()-> {ballSubsystem.eject();}));
 
 
 
@@ -75,7 +75,7 @@ public class RobotContainer {
     /////////
 
     // Configure the trigger bindings
-    configureBindings(); 
+    configureBindings();
     driveBase.setDefaultCommand(driveFieldOrientedAngularVelocity);
     //Turn on the switch
     PDH.setSwitchableChannel(false);
@@ -160,7 +160,7 @@ SwerveInputStream driveAngularVelocityKeyboard = SwerveInputStream.of(driveBase.
     // the intake
     operatorController.a()
         .whileTrue(ballSubsystem.runEnd(() -> ballSubsystem.eject(), () -> ballSubsystem.stop()));
-    
+
     m_driverController.back().onTrue(driveBase.zeroGyroWithAlliance());
   }
 
